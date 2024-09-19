@@ -1,15 +1,15 @@
 # Revisiting English Winogender Schemas for Consistency, Coverage, and Grammatical Case
 
-This repository contains code and data for our paper, which presents Winogender 2.0, an expanded dataset that also fixes issues with Winogender Schemas (Rudinger et al., 2018).
+This repository contains code and data for our paper, which presents WinoPron, an expanded dataset that also fixes issues with Winogender Schemas (Rudinger et al., 2018).
 
 ## Data
 
 We provide our newly constructed templates in a zipped data file. Please unzip it with the password `vogelbeobachtung131719`, using a command like `unzip -P PASSWORD FILE.zip`.
 It contains two files:
-* `new_templates.tsv`: Winogender 2.0 templates, where each row contains a sentence for a given occupation, participant and pronoun type, as well as
+* `new_templates.tsv`: WinoPron templates, where each row contains a sentence for a given occupation, participant and pronoun type, as well as
   a single-entity sentence that contains a version of the sentence with similar content but only one of the entities (either the occupation or participant)
   such that the coreference is maintained. The answer column is either 0 for a coreference with the occupation or 1 for coreference with the participant.
-* `old_templates.tsv`: Winogender 1.0 templates for comparison, where each row contains a sentence for a given occupation, participant and pronoun type;
+* `old_templates.tsv`: Winogender schemas (Rudinger et al., 2018) templates for comparison, where each row contains a sentence for a given occupation, participant and pronoun type;
   the answer column is either 0 for a coreference with the occupation or 1 for coreference with the participant.
 
 After unzipping, run:
@@ -18,8 +18,8 @@ After unzipping, run:
 `automatically_validated_singles.tsv` and `automatically_validated.tsv` for human validation with Google sheets; and
 `double.tsv` and `single.tsv` with single- and double-entity sentences for evaluation.
 
-Run `python3 scripts/prep_old_templates.py old_templates.tsv` to instantiate and convert the Winogender 1.0 templates into 
-`double_old.tsv`, which is in the same format as our Winogender 2.0 templates.
+Run `python3 scripts/prep_old_templates.py old_templates.tsv` to instantiate and convert the Winogender schemas templates into 
+`double_old.tsv`, which is in the same format as our WinoPron templates.
 
 ## Running FLAN-T5
 
@@ -49,4 +49,4 @@ Evaluates LingMess on the data files and stores TSV results in subfolders named 
 ## Compute performance
 
 `python3 scripts/compute_performance.py`
-Computes accuracy for FLAN-T5, CAW-coref and LingMess on Winogender 2.0 (double-entity and single-entity versions), and Winogender 1.0.
+Computes accuracy for FLAN-T5, CAW-coref and LingMess on WinoPron (double-entity and single-entity versions), and Winogender schemas (Rudinger et al., 2018).
